@@ -5,6 +5,7 @@ import {Avatar, AvatarFallback, AvatarImage} from "@/components/ui/avatar";
 import {Button} from "@/components/ui/button";
 import {ImageIcon, XIcon} from "lucide-react";
 import {useUser} from "@clerk/nextjs";
+import createPostAction from "@/actions/createPostAction";
 
 const PostForm = ({}) => {
   const ref = useRef<HTMLFormElement>(null);

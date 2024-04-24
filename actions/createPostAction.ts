@@ -9,6 +9,7 @@ import { BlobServiceClient } from "@azure/storage-blob";
 import { currentUser } from "@clerk/nextjs/server";
 import { randomUUID } from "crypto";
 import { revalidatePath } from "next/cache";
+import {AddPostRequestBody} from "@/app/api/posts/route";
 
 export default async function createPostAction(formData: FormData) {
   const user = await currentUser();
@@ -58,20 +59,20 @@ export default async function createPostAction(formData: FormData) {
 
       console.log("File uploaded successfully!", image_url);
 
-      // const body: AddPostRequestBody = {
-      //   user: userDB,
-      //   text: postInput,
-      //   imageUrl: image_url,
-      // };
+      const body: AddPostRequestBody = {
+        user: userDB,
+        text: postInput,
+        imageUrl: image_url,
+      };
 
-      // await Post.create(body);
+      await Post.create(body);
     } else {
-      // const body: AddPostRequestBody = {
-      //   user: userDB,
-      //   text: postInput,
-      // };
-      //
-      // await Post.create(body);
+      const body: AddPostRequestBody = {
+        user: userDB,
+        text: postInput,
+      };
+
+      await Post.create(body);
     }
   } catch (error: any) {
     throw new Error("Failed to create post", error);
