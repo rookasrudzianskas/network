@@ -11,11 +11,13 @@ import Image from "next/image";
 import {useUser} from "@clerk/nextjs";
 import {IPostDocument} from "@/mongodb/models/post";
 import PostOptions from "@/components/post-options";
+import deletePostAction from '@/actions/deletePostAction';
 
 const Post = ({ post }: { post: IPostDocument }) => {
   const { user } = useUser();
 
   const isAuthor = user?.id === post.user.userId;
+
   return (
     <div className="bg-white rounded-md border">
       <div className="p-4 flex space-x-2">
