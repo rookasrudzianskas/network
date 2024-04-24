@@ -3,8 +3,9 @@ import {currentUser} from "@clerk/nextjs/server";
 import {Avatar, AvatarFallback, AvatarImage} from "@/components/ui/avatar";
 import {SignedIn, SignedOut, SignInButton} from "@clerk/nextjs";
 import {Button} from "@/components/ui/button";
+import { IPostDocument } from '@/mongodb/models/post';
 
-const UserInformation = async ({}) => {
+const UserInformation = async ({ posts }: { posts: IPostDocument[] })  => {
   const user = await currentUser();
 
   const firstName = user?.firstName as string;
