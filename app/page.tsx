@@ -15,7 +15,7 @@ export default function Home() {
         <SignedIn>
           <PostForm/>
         </SignedIn>
-      {/*  <PostFeed posts={posts}/>*/}
+        <PostFeed posts={posts}/>
       </section>
 
       <section className="hidden xl:inline justify-center col-span-2">
