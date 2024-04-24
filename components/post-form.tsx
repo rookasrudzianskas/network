@@ -13,7 +13,24 @@ const PostForm = ({}) => {
   const { user, isSignedIn, isLoaded } = useUser();
 
   const handlePostAction = async (formData: FormData): Promise<void> => {
+    const formDataCopy = formData;
+    ref.current?.reset();
 
+    const text = formDataCopy.get("postInput") as string;
+
+    if (!text) {
+      throw new Error("You must provide a post input");
+    }
+
+    setPreview(null);
+
+    try {
+      await createPostAction(formDataCopy);
+    } catch (error) {
+      console.error(`Error creating post: ${error}`);
+
+      // Display toast
+    }
   }
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {

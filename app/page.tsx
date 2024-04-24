@@ -1,5 +1,7 @@
 import Image from "next/image";
 import UserInformation from "@/components/user-information";
+import PostForm from "@/components/post-form";
+import {SignedIn} from "@clerk/nextjs";
 
 export default function Home() {
   const posts = []
@@ -10,9 +12,9 @@ export default function Home() {
       </section>
 
       <section className="col-span-full md:col-span-6 xl:col-span-4 xl:max-w-xl mx-auto w-full">
-      {/*  <SignedIn>*/}
-      {/*    <PostForm/>*/}
-      {/*  </SignedIn>*/}
+        <SignedIn>
+          <PostForm/>
+        </SignedIn>
       {/*  <PostFeed posts={posts}/>*/}
       </section>
 
