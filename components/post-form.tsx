@@ -6,6 +6,7 @@ import {Button} from "@/components/ui/button";
 import {ImageIcon, XIcon} from "lucide-react";
 import {useUser} from "@clerk/nextjs";
 import createPostAction from "@/actions/createPostAction";
+import { toast } from 'sonner';
 
 const PostForm = ({}) => {
   const ref = useRef<HTMLFormElement>(null);
@@ -47,11 +48,11 @@ const PostForm = ({}) => {
         ref={ref}
         action={(formData) => {
           const promise = handlePostAction(formData);
-          // toast.promise(promise, {
-          //   loading: "Creating post...",
-          //   success: "Post created!",
-          //   error: (e) => "Error creating post: " + e.message,
-          // });
+          toast.promise(promise, {
+            loading: "Creating post...",
+            success: "Post created!",
+            error: (e) => "Error creating post: " + e.message,
+          });
         }}
         className="p-3 bg-white rounded-lg border"
       >
